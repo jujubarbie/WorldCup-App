@@ -1,14 +1,17 @@
-setTimeout(showEnoruxGame, 2000);
+setTimeout(showEnoruxGame, 1000);
 
 function showEnoruxGame()
 {
     document.querySelector("#enoruxGame").classList.add("show");
-    setTimeout(showIntroVideo, 4000);
+    init();
+    // setTimeout(showIntroVideo, 4000);
+    setTimeout(showIntroVideo, 100);
 }
 
 function showIntroVideo()
 {
-    let time = 17000;
+    let time = 100;
+    // let time = 17000;
 
     document.querySelector("#videoWorldCup").play();
     document.querySelector("#enoruxGame").classList.remove("show");
@@ -21,8 +24,6 @@ function showHome()
 {
     document.querySelector("#introVideo").classList.remove("show");
     document.querySelector("#home").classList.add("show");
-
-    init();
 }
 
 function showChoice()
@@ -48,4 +49,23 @@ function showPredictions()
 {
     document.querySelector("#see_predictions").classList.remove("show");
     document.querySelector("#predictions").classList.add("show");
+}
+
+//
+// Clickable functions
+//
+
+function nextFromHome()
+{
+    if(ready)
+    {
+        if(userChoice.id == null)
+        {
+            showChoice();
+        }
+        else
+        {
+            showSeePredictions();
+        }
+    }
 }

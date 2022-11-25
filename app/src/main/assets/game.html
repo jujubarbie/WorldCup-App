@@ -77,25 +77,69 @@
 <!-- HOME -->
 <!--      -->
 <div id="home">
-
+    <div class="title">
+        <h1>world cup</h1>
+        <h2>prognosis</h2>
+    </div>
+    <div class="text">
+        <p>
+            Welcome to World Cup Prediction App, the only application that allows you to follow in real time the evolution of users' predictions around
+            the world.
+        </p>
+        <p>
+            Which country do you think will be the winner? Which majority wins?
+            To your predictions!
+        </p>
+    </div>
+    <button class="next-button" onclick="nextFromHome()">next</button>
 </div>
 
 <!--             -->
 <!-- CHOICE FORM -->
 <!--             -->
 <div id="choice">
+    <div class="title">
+        <h1>world cup</h1>
+        <h2>prognosis</h2>
+    </div>
+    <div class="text">
+        <p>
+            Choose your winning country
+        </p>
+    </div>
+    <div id="countries_choice">
+
+    </div>
+    <button class="valid-button" onclick="validChoice()">validate your choice</button>
 </div>
 
 <!--                 -->
 <!-- SELECTED CHOICE -->
 <!--                 -->
 <div id="selected">
+    <div class="title">
+        <h1>world cup</h1>
+        <h2>prognosis</h2>
+    </div>
+    <div class="text">
+        <p>
+            Congratulations your participation is registered
+        </p>
+        <p>
+            Your selected country :
+        </p>
+    </div>
+    <div id="userChoice">
+        <img id="userChoiceImg" src="images/3.png" alt="Senegal"><div><span id="userChoiceName">Senegal</span> winner</div>
+    </div>
+    <button class="next-button" onclick="nextFromSelected()">next</button>
 </div>
 
 <!--                 -->
 <!-- SEE PREDICTIONS -->
 <!--                 -->
 <div id="see_predictions">
+    see predictions
 </div>
 
 <!--             -->
@@ -107,9 +151,9 @@
 <!--      -->
 <!-- TEST -->
 <!--      -->
-<div style="display: block">
-    <div id="test" style="font-size: 20px; position: absolute; top: 0; left: 0; background: rgba(255,255,255,0.5);">nothing</div>
-    <div id="test2" style="font-size: 20px; position: absolute; bottom: 0; left: 0; background: rgba(255,255,255,0.5);">nothing</div>
+<div style="display: none">
+    <div id="test" style="font-size: 20px; position: absolute; top: 0; left: 0; background: rgba(255,255,255,0.3);">nothing</div>
+    <div id="test2" style="font-size: 20px; position: absolute; bottom: 0; left: 0; background: rgba(255,255,255,0.3);">nothing</div>
 </div>
 </body>
 
@@ -118,5 +162,4 @@
 <script src="js/data.js"></script>
 <script src="js/one-page.js"></script>
 <script src="js/home.js"></script>
-<script src="js/mods.js"></script>
 </html>

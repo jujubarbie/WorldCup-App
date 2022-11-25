@@ -1,14 +1,13 @@
 let uuid = "test"; //TODO change before launch
 let SECRET_ID = "enorux"; //TODO change before launch
-let mod;
-let level_id;
 let isAdMobReady = true; //TODO change before launch
 let isInterstitialAdReady = false;
 let noAdCanBeLoad = false;
-let attemptAmountForAd = 0;
-let levelPassAmountForAd = 0;
-let facebook = {};
-let confidentiality = true;
+let videoIntroShown = false;
+let userChoice = null;
+let countries = null;
+let ready = false;
+let currentSelection = -1;
 
 // function justATest()
 // {
@@ -57,24 +56,6 @@ function onAdFinish()
     }, 1000);
 }
 
-function evaluateShowAd()
-{
-    if (attemptAmountForAd >= 3)
-    {
-        showAd();
-        attemptAmountForAd = 0;
-        levelPassAmountForAd = 0;
-        return;
-    }
-
-    if (levelPassAmountForAd >= 2)
-    {
-        showAd();
-        attemptAmountForAd = 0;
-        levelPassAmountForAd = 0;
-    }
-}
-
 function showAd()
 {
     try
@@ -84,29 +65,6 @@ function showAd()
     {
 
     }
-}
-
-function loginFB()
-{
-    try
-    {
-        window.AndroidBridge.loginFacebook();
-    } catch (e)
-    {
-
-    }
-}
-
-function setFacebookData(email)
-{
-    facebook.email = email;
-
-    displayWhatever(JSON.stringify(facebook));
-}
-
-function facebookLogged()
-{
-    facebook.logged = true;
 }
 
 // #######################################################################
@@ -132,15 +90,42 @@ async function init()
 
 async function loadData()
 {
-    //TODO
-    await loadHomeData();
-    setTimeout(showHomeVideo, 1000);
+    await loadCountriesData();
+    
+    populateCountriesForm();
+
+    ready = true;
 }
 
-async function authenticate()
+function populateCountriesForm()
 {
-    return await request("login", "POST", {'uuid': uuid, 'secret_id': SECRET_ID}, parseLoginData);
+    let countriesForm = document.querySelector("#countries_choice");
+    for(let i = 0; i < countries.length; i++)
+    {
+        const img = document.createElement("img");
+        img.src = "images/" + countries[i].id + ".png";
+        img.alt = "" + countries[i].name;
+        img.setAttribute('onclick',"selectCountry(\'" + countries[i].id + "\')")
+        countriesForm.appendChild(img);
+    }
 }
+
+function selectCountry(id)
+{
+    console.log(id);
+    currentSelection = id;
+}
+
+function validChoice()
+{
+    if(currentSelection !== -1 && currentSelection <= countries[countries.length - 1].id)
+    {
+        sendVote();
+        showSelected();
+    }
+}
+
+
 
 // #######################################################################
 // #######################################################################
@@ -254,9 +239,14 @@ function checkResponse(res)
 // ############################### REQUESTS ##############################
 // #######################################################################
 // #######################################################################
-async function loadHomeData()
+async function authenticate()
 {
-    return await request("home", "GET", {}, parseHomeData);
+    return await request("login", "POST", {'uuid': uuid, 'secret_id': SECRET_ID}, parseLoginData);
+}
+
+async function loadCountriesData()
+{
+    return await request("countries", "GET", {}, parseCountriesData);
 }
 
 async function loadUserLevelsData(mod_)
@@ -271,9 +261,9 @@ async function loadLevel(level_id_)
     return await request("level/" + mod + "/" + level_id, "GET", {}, parseLevelData);
 }
 
-async function sendResultLevel(time)
+async function sendVote()
 {
-    return await request("level/" + mod + "/" + level_id, "PATCH", {'time': time}, parseSendResultLevelData);
+    return await request("vote/" + currentSelection, "PATCH", {}, parseVoteData);
 }
 
 // #######################################################################
@@ -284,82 +274,40 @@ async function sendResultLevel(time)
 function parseLoginData(res)
 {
     console.log(res);
-    document.querySelector("#test").innerHTML = "" + res.message;
-    if (res.status !== "failure")
+
+    if(res.status === "success")
     {
-        document.querySelector("#test").innerHTML = "new : " + res.new;
+        if(res.country_vote !== undefined)
+        {
+            userChoice = res.country_vote;
+        }
     }
 
     return res.token;
 }
 
-function parseHomeData(res)
+function parseCountriesData(res)
 {
     console.log(res);
-    document.querySelector("#test").innerHTML = "" + res;
 
-    if (res.status !== "failure")
+    if (res.status === "success")
     {
-        document.querySelector("#home").querySelector("#data_home_level").textContent = res.user.level;
-        document.querySelector("#home").querySelector("#data_home_map_win").textContent = res.user.map_win;
-        document.querySelector("#home").querySelector("#data_home_points").textContent = res.user.points;
-        document.querySelector("#home").querySelector("#data_home_diamonds").textContent = res.user.diamonds;
-        document.querySelector("#home").querySelector("#data_home_rank").textContent = res.user.rank;
-        // document.querySelector("#test").innerHTML = "new : " + res.new;
+        if(res.countries !== undefined)
+        {
+            countries = res.countries;
+        }
     }
 
     return res.token;
 }
 
-function parseUserLevelsData(res)
+function parseVoteData(res)
 {
     console.log(res);
-    // document.querySelector("#test").innerHTML = "" + res;
 
-    if (res.status !== "failure")
+    if (res.status === "success")
     {
-        let levelList = document.querySelector("#levelList");
-
-        levelList.innerHTML = "";
-
-        for (let i = 0; i < res.maps_id.length; i++)
-        {
-            let div = document.createElement("div");
-            div.textContent = "" + (i + 1);
-            div.classList.add("level-box");
-            levelList.appendChild(div);
-        }
-
-        levelList.style.width = "unset";
-
-        let lastLevel = Array.from(levelList.querySelectorAll('.level-box')).pop();
-        if (lastLevel !== undefined)
-        {
-            let lastLevelStyle = getComputedStyle(lastLevel);
-            levelList.style.width = (convertPXToVH(lastLevelStyle.left) + (convertPXToVH(lastLevelStyle.width) * 2)) + "vh";
-        }
-
-        let boxes = levelList.querySelectorAll(".level-box");
-
-        for (let i = 0; i < res.user_maps.length; i++)
-        {
-            boxes[i].classList.add("enable");
-            boxes[i].classList.remove("next");
-            boxes[i].onclick = function ()
-            {
-                showVideo1(res.maps_id[i].id);
-            };
-        }
-
-        if (boxes[res.user_maps.length] !== undefined)
-        {
-            boxes[res.user_maps.length].classList.add("enable");
-            boxes[res.user_maps.length].classList.add("next");
-            boxes[res.user_maps.length].onclick = function ()
-            {
-                showVideo1(res.maps_id[res.user_maps.length].id);
-            };
-        }
+        console.log("ok");
     }
 
     return res.token;
