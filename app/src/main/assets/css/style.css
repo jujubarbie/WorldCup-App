@@ -1,0 +1,96 @@
+body
+{
+    background: #040520;
+    max-width: 100vw;
+    max-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#enoruxGame,
+#competitionEdition,
+#theBest,
+#loading,
+#home,
+#menu,
+#mods,
+#levels,
+#gameBox,
+#game_video1,
+#game_video2,
+#home_video,
+#settings,
+#mod_video,
+#back_home_video,
+#fb,
+#confidentiality,
+#connectionMenu
+{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    opacity: 0;
+    transition: opacity 0.5s, left 0s 0.5s;
+    overflow: hidden;
+}
+
+#enoruxGame
+{
+    background-image: url("../images/logo_enorux_game.png");
+}
+
+#competitionEdition
+{
+    background-image: url("../images/logo_competition_edition.png");
+}
+
+
+#mods
+{
+    background-image: url("../images/mod.jpg");
+}
+
+/*#steps*/
+/*{*/
+/*    background-image: url("../images/level.jpg") ;*/
+/*}*/
+
+#levels
+{
+    background-image: url("../images/level2.jpg");
+}
+
+
+#myVideo
+{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.show
+{
+    left: 0 !important;
+    opacity: 1 !important;
+    transition: opacity 0.5s 0.5s, left 0s !important;
+}
+
+.fast-show
+{
+    left: 0 !important;
+    opacity: 1 !important;
+    transition: opacity 0.5s, left 0s !important;
+}
+
+.instant-show
+{
+    left: 0 !important;
+    opacity: 1 !important;
+    transition: opacity 0s, left 0s !important;
+}

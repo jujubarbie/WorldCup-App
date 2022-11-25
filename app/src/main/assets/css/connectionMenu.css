@@ -1,0 +1,28 @@
+#connectionMenu
+{
+    background: rgb(50, 50, 50);
+}
+
+#connectionMenu .buttons
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#connectionMenu .guest
+{
+    width: 33%;
+    background: green;
+    color: white;
+}
+
+#connectionMenu .decline
+{
+    width: 33%;
+    background: blue;
+    color: white;
+}

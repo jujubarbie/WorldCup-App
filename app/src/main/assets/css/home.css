@@ -1,0 +1,195 @@
+#home
+{
+    background-image: url("../images/home32.jpg") ;
+    overflow: hidden;
+    background-size: 100% !important;
+    background-position: center;
+}
+
+#home *
+{
+    /*opacity: 0.5;*/
+    /*filter: brightness(150%);*/
+}
+
+#home .number
+{
+    display: block;
+    flex: 0 0 auto;
+    /*min-width: 20%;*/
+    color: white;
+    font-family: "Comfortaa Light", serif;
+    font-size: 3.5vh;
+    padding-top: 0.7vh;
+}
+#home .text
+{
+    display: block;
+    flex: 0 0 auto;
+    min-width: 20%;
+    color: white;
+    font-family: "Comfortaa Light", serif;
+    font-size: 3vh;
+    padding-top: 0.7vh;
+}
+
+/* LEVEL ################################# */
+#home .level
+{
+    background: rgba(12, 45, 80, 1);
+    width: 16%;
+    height: 13%;
+    position: absolute;
+    left: 5%;
+    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+}
+
+#home .level .title
+{
+    color: white;
+    font-size: 3.5vh;
+    text-align: center;
+    font-family: "Comfortaa Light", serif;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+#home .level .level-info
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+    height: 46%;
+    font-size: 0;
+}
+
+#home .level img
+{
+    height: 100%;
+}
+
+/* NUMBERS ################################# */
+#home .numbers
+{
+    background: rgba(12, 45, 80, 1);
+    position: absolute;
+    top: 0;
+    left: 60%;
+    transform: translateX(-50%);
+    display: flex;
+    /*gap: 30%;*/
+    height: 12%;
+    /*width: 75%;*/
+    justify-content: center;
+    padding-left: 7vw;
+    padding-right: 0vw;
+    clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+}
+
+#home .numbers > div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    height: 100%;
+    padding-right: 7vw;
+}
+
+#home .numbers > div img
+{
+    height: 50%;
+}
+
+/* THE BEST ################################# */
+#home .thebest
+{
+    background: linear-gradient(90deg, rgba(12, 45, 80, 0) 10%, rgba(12, 45, 80, 0.9));;
+    width: 6%;
+    height: 74%;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+    right: 0;
+    clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 95%);
+    transition: width 0.5s;
+}
+
+#home .thebest .arrow-expand
+{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 4vw;
+}
+/* CONTENT ################################# */
+#home .content-box
+{
+    display: none;
+    /*opacity: 0.5;*/
+    /*background-color: red;*/
+    /*width: 63%;*/
+    height: 55%;
+    aspect-ratio: 20/9;
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#home .content-decoration
+{
+    background: url("../images/content-decoration.png") no-repeat;
+    background-size: 80% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#home .content-box .content
+{
+    background: rgba(12, 45, 80, 0.6);
+    width: 79%;
+    height: 79.5%;
+    position: absolute;
+    top: 15%;
+    left: 0;
+}
+
+#home .content-box .ranking-box
+{
+    height: 95%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 4%;
+    right: 0;
+}
+
+#home .content-box .ranking-box .ranking-banner
+{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#home .content-box .ranking-box .rank
+{
+    position: absolute;
+    bottom: 22%;
+    right: 64%;
+    height: 28%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Comfortaa Light", serif;
+    font-size: 2.8vh;
+}
