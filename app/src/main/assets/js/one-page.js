@@ -1,17 +1,15 @@
-setTimeout(showEnoruxGame, 1000);
+setTimeout(showEnoruxGame, 2000);
 
 function showEnoruxGame()
 {
     document.querySelector("#enoruxGame").classList.add("show");
     init();
-    // setTimeout(showIntroVideo, 4000);
-    setTimeout(showIntroVideo, 100);
+    setTimeout(showIntroVideo, 3000);
 }
 
 function showIntroVideo()
 {
-    let time = 100;
-    // let time = 17000;
+    let time = 4000;
 
     document.querySelector("#videoWorldCup").play();
     document.querySelector("#enoruxGame").classList.remove("show");

@@ -1,6 +1,6 @@
 body
 {
-    background: #040520;
+    background: #0C2D50;
     max-width: 100vw;
     max-height: 100vh;
     padding: 0;
@@ -30,7 +30,7 @@ body
 
 #enoruxGame
 {
-    background-image: url("../images/logo_enorux_game.png");
+    background-image: url("../images/logo_enorux_gameVertical.jpg");
 }
 
 .show
