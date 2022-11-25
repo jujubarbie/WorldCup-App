@@ -8,23 +8,12 @@ body
 }
 
 #enoruxGame,
-#competitionEdition,
-#theBest,
-#loading,
+#introVideo,
 #home,
-#menu,
-#mods,
-#levels,
-#gameBox,
-#game_video1,
-#game_video2,
-#home_video,
-#settings,
-#mod_video,
-#back_home_video,
-#fb,
-#confidentiality,
-#connectionMenu
+#choice,
+#selected,
+#see_predictions,
+#predictions
 {
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -41,37 +30,6 @@ body
 #enoruxGame
 {
     background-image: url("../images/logo_enorux_game.png");
-}
-
-#competitionEdition
-{
-    background-image: url("../images/logo_competition_edition.png");
-}
-
-
-#mods
-{
-    background-image: url("../images/mod.jpg");
-}
-
-/*#steps*/
-/*{*/
-/*    background-image: url("../images/level.jpg") ;*/
-/*}*/
-
-#levels
-{
-    background-image: url("../images/level2.jpg");
-}
-
-
-#myVideo
-{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
 }
 
 .show

@@ -1,13 +1,7 @@
-#home
+#selected
 {
     background-image: url("../images/home32.jpg") ;
     overflow: hidden;
     background-size: 100% !important;
     background-position: center;
-}
-
-#home *
-{
-    /*opacity: 0.5;*/
-    /*filter: brightness(150%);*/
 }
