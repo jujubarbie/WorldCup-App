@@ -8,7 +8,7 @@ function showEnoruxGame()
 
 function showIntroVideo()
 {
-    let time = 100;
+    let time = 17000;
 
     document.querySelector("#videoWorldCup").play();
     document.querySelector("#enoruxGame").classList.remove("show");
