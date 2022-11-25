@@ -55,15 +55,27 @@ function showPredictions()
 
 function nextFromHome()
 {
-    if(ready)
+    if (ready)
     {
-        if(userChoice.id == null)
+        if (userChoice.id == null)
         {
             showChoice();
         }
         else
         {
-            showSeePredictions();
+            seePredictions();
         }
     }
+}
+
+function nextFromSelected()
+{
+    seePredictions();
+}
+
+async function seePredictions()
+{
+    showSeePredictions();
+    await loadPredictionsData();
+    populatePredictions();
 }

@@ -1,7 +1,7 @@
 #see_predictions
 {
-    background-image: url("../images/home32.jpg") ;
+    background-image: url("../images/fond.jpg");
     overflow: hidden;
-    background-size: 100% !important;
+    background-size: 100% 100% !important;
     background-position: center;
 }

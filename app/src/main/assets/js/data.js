@@ -6,6 +6,7 @@ let noAdCanBeLoad = false;
 let videoIntroShown = false;
 let userChoice = null;
 let countries = null;
+let predictions = null;
 let ready = false;
 let currentSelection = -1;
 
@@ -90,9 +91,16 @@ async function init()
 
 async function loadData()
 {
-    await loadCountriesData();
-    
-    populateCountriesForm();
+    if(userChoice.id == null)
+    {
+        await loadCountriesData();
+
+        populateCountriesForm();
+    }
+    else
+    {
+        populateSeePredictions();
+    }
 
     ready = true;
 }
@@ -102,16 +110,19 @@ function populateCountriesForm()
     let countriesForm = document.querySelector("#countries_choice");
     for(let i = 0; i < countries.length; i++)
     {
+        const div = document.createElement("div");
         const img = document.createElement("img");
         img.src = "images/" + countries[i].id + ".png";
         img.alt = "" + countries[i].name;
-        img.setAttribute('onclick',"selectCountry(\'" + countries[i].id + "\')")
-        countriesForm.appendChild(img);
+        img.setAttribute('onclick',"selectCountry(this, \'" + countries[i].id + "\')")
+        div.appendChild(img);
+        countriesForm.appendChild(div);
     }
 }
 
-function selectCountry(id)
+function selectCountry(elem, id)
 {
+    // elem.
     console.log(id);
     currentSelection = id;
 }
@@ -121,7 +132,53 @@ function validChoice()
     if(currentSelection !== -1 && currentSelection <= countries[countries.length - 1].id)
     {
         sendVote();
+        populateSelected();
+        populateSeePredictions();
         showSelected();
+    }
+}
+
+function populateSelected()
+{
+    let userChoiceImg = document.querySelector("#userChoiceImg");
+    let userChoiceName = document.querySelector("#userChoiceName");
+    userChoice = countries.find(obj => obj.id == currentSelection);
+
+    userChoiceImg.src = "images/" + userChoice.id + ".png";
+    userChoiceImg.alt = "" + userChoice.name;
+    userChoiceName.innerHTML = "" + userChoice.name;
+}
+
+function populateSeePredictions()
+{
+    let selectedCountryName = document.querySelector("#selectedCountryName");
+    selectedCountryName.innerHTML = "" + userChoice.name;
+}
+
+function populatePredictions()
+{
+    let voteAmount = 0;
+    let countriesPredictions = document.querySelector("#countriesPredictions");
+    let voteAmountElem = document.querySelector("#voteAmount");
+
+    for(let i = 0; i < predictions.length; i++)
+    {
+        voteAmount += predictions[i].vote_amount;
+    }
+
+    voteAmountElem.innerHTML = "" + voteAmount;
+
+    for(let i = 0; i < predictions.length; i++)
+    {
+        const div = document.createElement("div");
+        const img = document.createElement("img");
+        img.src = "images/" + predictions[i].id + ".png";
+        img.alt = "" + predictions[i].name;
+        div.appendChild(img);
+        const span = document.createElement("span");
+        span.innerHTML = "" + (predictions[i].vote_amount / voteAmount * 100).toFixed(0) + "%";
+        div.appendChild(span);
+        countriesPredictions.appendChild(div);
     }
 }
 
@@ -249,16 +306,9 @@ async function loadCountriesData()
     return await request("countries", "GET", {}, parseCountriesData);
 }
 
-async function loadUserLevelsData(mod_)
+async function loadPredictionsData()
 {
-    mod = mod_;
-    return await request("levels/" + mod, "GET", {}, parseUserLevelsData);
-}
-
-async function loadLevel(level_id_)
-{
-    level_id = level_id_;
-    return await request("level/" + mod + "/" + level_id, "GET", {}, parseLevelData);
+    return await request("countries_vote", "GET", {}, parsePredictionsData);
 }
 
 async function sendVote()
@@ -301,6 +351,21 @@ function parseCountriesData(res)
     return res.token;
 }
 
+function parsePredictionsData(res)
+{
+    console.log(res);
+
+    if (res.status === "success")
+    {
+        if(res.countries !== undefined)
+        {
+            predictions = res.countries;
+        }
+    }
+
+    return res.token;
+}
+
 function parseVoteData(res)
 {
     console.log(res);
@@ -308,32 +373,6 @@ function parseVoteData(res)
     if (res.status === "success")
     {
         console.log("ok");
-    }
-
-    return res.token;
-}
-
-function parseLevelData(res)
-{
-    console.log(res);
-    document.querySelector("#test").innerHTML = "" + res;
-
-    if (res.status !== "failure")
-    {
-        extractLevel(JSON.parse(res.map.data));
-    }
-
-    return res.token;
-}
-
-function parseSendResultLevelData(res)
-{
-    console.log(res);
-    document.querySelector("#test").innerHTML = "" + res;
-
-    if (res.status !== "failure")
-    {
-        showGameResult(res);
     }
 
     return res.token;

@@ -65,7 +65,10 @@
 <!--                    -->
 <div id="introVideo">
     <video muted id="videoWorldCup" poster="images/banner1.png"
-           style="width: 100%; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+           style="height: 100vh;
+        width: 100%;
+        object-fit: fill;
+    position: absolute;">
         <source src="videos/worldCup.mp4"
                 type="video/mp4">
 
@@ -130,7 +133,7 @@
         </p>
     </div>
     <div id="userChoice">
-        <img id="userChoiceImg" src="images/3.png" alt="Senegal"><div><span id="userChoiceName">Senegal</span> winner</div>
+        <img id="userChoiceImg" src="" alt=""><div><span id="userChoiceName"></span> winner</div>
     </div>
     <button class="next-button" onclick="nextFromSelected()">next</button>
 </div>
@@ -139,13 +142,31 @@
 <!-- SEE PREDICTIONS -->
 <!--                 -->
 <div id="see_predictions">
-    see predictions
+    <div class="title">
+        <h1>world cup</h1>
+        <h2>prognosis</h2>
+    </div>
+    <div class="text">
+        <p>
+            Your participation for <span id="selectedCountryName"></span> is up to date !
+        </p>
+        <p>
+            Consult other users' predictions in real time
+        </p>
+    </div>
+    <button class="next-button" onclick="showPredictions()">See current predictions</button>
 </div>
 
 <!--             -->
 <!-- PREDICTIONS -->
 <!--             -->
 <div id="predictions">
+    <div class="title">
+        <h1>world cup</h1>
+        <h2>prognosis</h2>
+    </div>
+    <div class="vote-amount">Vote amount : <span id="voteAmount">0</span></div>
+    <div id="countriesPredictions"></div>
 </div>
 
 <!--      -->

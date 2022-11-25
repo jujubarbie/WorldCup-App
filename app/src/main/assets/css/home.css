@@ -1,8 +1,8 @@
 #home
 {
-    background-image: url("../images/fond.jpg") ;
+    background-image: url("../images/fond.jpg");
     overflow: hidden;
-    background-size: 100% !important;
+    background-size: 100% 100% !important;
     background-position: center;
 }
 
@@ -10,4 +10,29 @@
 {
     /*opacity: 0.5;*/
     /*filter: brightness(150%);*/
+}
+
+.title
+{
+    text-transform: uppercase;
+    font-family: Calibri;
+    background: url("../images/title_decoration.png") no-repeat;
+    background-size: contain;
+}
+
+.title h1
+{
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.title h2
+{
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+    font-size: 44px;
+    padding-left: 70px;
 }
