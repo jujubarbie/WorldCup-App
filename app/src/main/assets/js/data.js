@@ -9,6 +9,7 @@ let countries = null;
 let predictions = null;
 let ready = false;
 let currentSelection = -1;
+let currentElem = null;
 
 // function justATest()
 // {
@@ -122,7 +123,13 @@ function populateCountriesForm()
 
 function selectCountry(elem, id)
 {
-    // elem.
+    if(currentElem != null)
+    {
+        currentElem.classList.remove("selected");
+    }
+    currentElem = elem;
+    currentElem.classList.add("selected");
+
     console.log(id);
     currentSelection = id;
 }

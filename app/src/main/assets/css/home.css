@@ -18,6 +18,7 @@
     font-family: Calibri;
     background: url("../images/title_decoration.png") no-repeat;
     background-size: contain;
+    padding-bottom: 10px;
 }
 
 .title h1
@@ -25,7 +26,8 @@
     margin: 0;
     padding-top: 20px;
     text-align: center;
-    font-size: 40px;
+    font-size: 44px;
+    padding-left: 30px;
 }
 
 .title h2
@@ -33,6 +35,67 @@
     text-align: center;
     margin: 0;
     font-style: italic;
-    font-size: 44px;
-    padding-left: 70px;
+    font-size: 48px;
+    padding-left: 100px;
+}
+
+.grass
+{
+    background: url("../images/grass.png") no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.text
+{
+    padding-top: 5vh;
+    padding-right: 6vw;
+    padding-left: 20vw;
+    text-transform: uppercase;
+    font-family: Calibri;
+    text-align: right;
+    margin: 0;
+    font-size: 28px;
+}
+
+.text p
+{
+    padding-top: 5vh;
+}
+
+#home .decoration
+{
+    height: 100%;
+    width: 15vw;
+    background: url("../images/home_decoration.png") no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    position: absolute;
+    bottom: 10vh;
+    left: 0;
+}
+
+.next-button
+{
+    text-transform: uppercase;
+    font-family: Calibri;
+    background: #CF142B;
+    float: right;
+    color: white;
+    font-style: italic;
+    font-size: 30px;
+    margin-right: 6vw;
+    padding: 10px 26px;
+    border: none;
+    margin-top: 5vh;
+}
+
+.selected
+{
+    color: red;
 }

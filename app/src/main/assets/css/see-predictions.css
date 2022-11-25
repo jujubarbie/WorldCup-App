@@ -1,7 +1,34 @@
 #see_predictions
 {
-    background-image: url("../images/fond.jpg");
+    background-image: url("../images/see_background.jpg");
     overflow: hidden;
-    background-size: 100% 100% !important;
+    background-size: cover;
     background-position: center;
+}
+
+#see_predictions .text
+{
+    padding-top: 5vh;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    text-transform: uppercase;
+    font-family: Calibri;
+    text-align: right;
+    margin: 0;
+    font-size: 32px;
+}
+
+#see_predictions .text .one
+{
+    color: #EE1B24;
+    text-shadow: 1px 1px 1px black;
+    font-style: italic;
+    text-align: center;
+}
+
+#see_predictions .text .two
+{
+    text-shadow: 1px 1px 1px black;
+    font-style: italic;
+    font-size: 34px;
 }
