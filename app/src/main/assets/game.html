@@ -33,10 +33,13 @@
         -webkit-highlight: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
-
 </style>
 
 <body>
+
+<!--       -->
+<!-- AUDIO -->
+<!--       -->
 <div id="audio" style="height: 0; width: 0; overflow: hidden;">
     <video id="audio_music">
         <source src="" type="video/mp4">
@@ -54,12 +57,18 @@
         <source src="" type="video/mp4">
     </video>
 </div>
+
+<!--             -->
+<!-- ENORUX GAME -->
+<!--             -->
 <div id="enoruxGame">
 </div>
-<div id="competitionEdition">
-</div>
-<div id="theBest">
-    <video muted id="videoTheBest" poster="images/banner1.png"
+
+<!--                    -->
+<!-- VIDEO INTRODUCTION -->
+<!--                    -->
+<div id="introVideo">
+    <video muted id="videoWorldCup" poster="images/banner1.png"
            style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
         <source src="videos/presentation1.mp4"
                 type="video/mp4">
@@ -67,261 +76,41 @@
         Sorry, your browser doesn't support embedded videos.
     </video>
 </div>
-<div id="confidentiality">
-    <div class="terms">
-        blablabla
-    </div>
-    <div class="buttons">
-        <div class="decline" onclick="declineConfidentiality()">
-            Decline
-        </div>
-        <div class="accept" onclick="acceptConfidentiality()">
-            Accept
-        </div>
-    </div>
-</div>
-<div id="connectionMenu">
-    <div class="buttons">
-        <div class="guest" onclick="playAsGuest()">
-            Play
-        </div>
-        <div class="login-facebook" onclick="loginFB()">
-            Connect with Facebook
-        </div>
-    </div>
-</div>
-<div id="loading">
-    <div id="load">
-        <div>G</div>
-        <div>N</div>
-        <div>I</div>
-        <div>D</div>
-        <div>A</div>
-        <div>O</div>
-        <div>L</div>
-    </div>
-</div>
-<div id="home_video">
-    <video muted id="home_video_" poster="images/banner1.png"
-           style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-        <source src="videos/home.mp4" type="video/mp4">
-    </video>
-</div>
+
+<!--      -->
+<!-- HOME -->
+<!--      -->
 <div id="home">
-        <div class="level">
-            <div class="title">Level</div>
-            <div class="level-info">
-                <img src="images/level-icon.png" alt="level icon"/>
-                <div id="data_home_level" class="number">45</div>
-            </div>
-        </div>
-    <div class="numbers">
-<!--        <div id="">-->
-<!--            <div class="title">Level</div>-->
-<!--            <div class="level-info">-->
-<!--                <img src="images/level-icon.png" alt="level icon"/>-->
-<!--                <span id="data_home_level" class="number">25</span>-->
-<!--            </div>-->
-<!--        </div>-->
-        <div class="puzzle">
-            <img src="images/puzzle-icon.png" alt="puzzle icon"/>
-            <span id="data_home_map_win" class="number">25</span>
-        </div>
-        <div class="crown">
-            <img src="images/crown-icon.png" alt="crown icon"/>
-            <span id="data_home_points" class="number">47 582</span>
-        </div>
-        <div class="diamond">
-            <img src="images/diamond-icon.png" alt="diamond icon"/>
-            <span id="data_home_diamonds" class="number">256</span>
-        </div>
-    </div>
-    <div id="theBestBox" class="thebest">
-        <img id="theBestArrowExpand" class="arrow-expand" src="images/thebest-arrow-icon.png" alt="the best arrow icon" onclick="showTheBestBox()">
-    </div>
-    <div class="content-box">
 
-        <div class="content">
+</div>
 
-        </div>
-        <div class="content-decoration"></div>
-        <div class="ranking-box">
-            <img class="ranking-banner" src="images/banner1.png" alt="banner"/>
-            <div id="data_home_rank" class="rank">2505</div>
-        </div>
-    </div>
+<!--             -->
+<!-- CHOICE FORM -->
+<!--             -->
+<div id="choice">
 </div>
-<div id="mod_video">
-    <video muted id="mod_video_" poster="images/banner1.png"
-           style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-        <source src="videos/mod.mp4" type="video/mp4">
-    </video>
-</div>
-<div id="mods" style="overflow: hidden;">
-    <div id="case" onclick="showLevels(1)">Selection niveau</div>
-    <div id="modsBox">
-        <button id="modLeft" class="modChange" onclick="changeModLeft();">◀</button>
-        <div class="hidder">
-            <div id="modsList">
-                <div class="mod-item" onclick="showLevels(1)">
-                    <span>mod name 1</span>
-                    <img src="images/banner1.png">
-                </div>
-                <div class="mod-item" onclick="showLevels(2)">
-                    <span>mod name 2</span>
-                    <img src="images/level-icon.png">
-                </div>
-                <div class="mod-item" onclick="showLevels(3)">
-                    <span>mod name 3</span>
-                    <img src="images/ranking-icon.png">
-                </div>
-            </div>
-        </div>
-        <button id="modRight" class="modChange" onclick="changeModRight();">▶</button>
-    </div>
-</div>
-<div id="levels" style="overflow: hidden;">
-    <div id="sliding_steps">
-        <div id="levelList">
-        </div>
-    </div>
-    <div id="mod_name">Mod Name</div>
-</div>
-<div id="back_home_video">
-    <video muted id="back_home_video_" poster="images/banner1.png"
-           style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-        <source src="videos/exitmod.mp4" type="video/mp4">
-    </video>
-</div>
-<div id="menu">
-    <div class="main-menu">
-        <div class="menu-background"></div>
-        <div class="play-box">
-            <div class="play-triangle"></div>
-            <div id="menu_play_box" class="play-button" onclick="showModVideo()">
-                <div>PLAY</div>
-                <img id="menu_play_img" src="images/play-controller.png" alt="controller icon"/>
-            </div>
-            <div id="menu_home_box" class="play-button hide" onclick="showBackHomeVideo()">
-                <div>HOME</div>
-                <img src="images/play-controller.png" alt="controller icon"/>
-            </div>
-        </div>
-        <div class="menu-left">
-            <div class="profile">
-                <img src="images/profile-icon.png" alt="profile icon"/>
-                <span class="text">Profile</span>
-            </div>
-            <div class="ranking">
-                <img src="images/ranking-icon.png" alt="ranking icon"/>
-                <span class="text">Ranking</span>
-            </div>
 
-        </div>
-        <div class="menu-right">
-            <div class="shop">
-                <img src="images/shop-icon.png" alt="shop icon"/>
-                <span class="text">Shop</span>
-            </div>
-            <div class="settings" onclick="showFB()">
-                <img src="images/settings-icon.png" alt="settings icon"/>
-                <span class="text">Settings</span>
-            </div>
-        </div>
-    </div>
+<!--                 -->
+<!-- SELECTED CHOICE -->
+<!--                 -->
+<div id="selected">
 </div>
-<div id="fb">
-    <iframe id="fb_src" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;z-index: 5; background: white; box-sizing: border-box;"></iframe>
-    <div onclick="hideFB()" style="position: absolute; bottom: 0; right: 0;background: white; font-size: 3vh; z-index: 10; height: 5vh; width: 5vh;">X</div>
-    <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=610014044014083&autoLogAppEvents=1" nonce="lTNyGRnd"></script>
-</div>
-<div id="settings" style="overflow-y: auto; overflow-x: hidden;">
-    <div>
-        <h1>Audio settings</h1>
-        <div>
-            <span>Music volume</span>
-            <div><input id="music_volume" type="range" min="0" max="1" value="1" step="0.01"></div>
-            <span>Sound volume</span>
-            <div><input id="sound_volume" type="range" min="0" max="1" value="1" step="0.01"></div>
-        </div>
-        <h1>General settings</h1>
-        <div>
-            <span>A setting</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </div>
 
-    </div>
+<!--                 -->
+<!-- SEE PREDICTIONS -->
+<!--                 -->
+<div id="see_predictions">
 </div>
-<div id="gameBox">
-    <div class="game">
-        <div class="lifes">
-            <span class="life lost">♥</span>
-            <span class="life lost">♥</span>
-            <span class="life lost">♥</span>
-        </div>
-        <table id="move">
-            <tr>
-                <td></td>
-                <td id="up" class="lock">▲</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td id="left" class="lock">◀</td>
-                <td id="laggy"></td>
-                <td id="right" class="lock">▶</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td id="down" class="lock">▼</td>
-                <td></td>
-            </tr>
-        </table>
-        <div id="counter"></div>
-        <table id="game"></table>
-    </div>
-    <div id="backToLevels" onclick="attemptBackToLevels();">↩</div>
-    <div id="confirmBackToLevels">
-        <div id="confirmBackToLevelsBox">
-            <p>Are you sure to go back?<br/>This action count as a loss.</p>
-            <button onclick="backToLevels();">Yes</button>
-            <button onclick="cancelAttemptBackToLevels();">No</button>
-        </div>
-    </div>
-    <div id="gameResult">
-        <div id="gameResultBox" class="gameWin">
-            <h1 id="winTitle">Victory</h1>
-            <h1 id="loseTitle">Defeat</h1>
-            <div class="resultPointsBox">
-                <span id="resultPoints">0</span><img src="images/crown-icon.png" alt="crown icon">
-            </div>
-            <button onclick="quitGame();">Quit</button>
-        </div>
 
-    </div>
+<!--             -->
+<!-- PREDICTIONS -->
+<!--             -->
+<div id="predictions">
 </div>
-<div id="game_video1">
-    <video muted id="game_video1_" poster="images/banner1.png"
-           style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-        <source src="videos/gametransition.webm"
-                type="video/mp4">
 
-        Sorry, your browser doesn't support embedded videos.
-    </video>
-</div>
-<div id="game_video2">
-    <video muted id="game_video2_" poster="images/banner1.png"
-           style="width: 100%; aspect-ratio: 16/9; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-        <source src="videos/game.mp4"
-                type="video/mp4">
-
-        Sorry, your browser doesn't support embedded videos.
-    </video>
-</div>
+<!--      -->
+<!-- TEST -->
+<!--      -->
 <div style="display: block">
     <div id="test" style="font-size: 20px; position: absolute; top: 0; left: 0; background: rgba(255,255,255,0.5);">nothing</div>
     <div id="test2" style="font-size: 20px; position: absolute; bottom: 0; left: 0; background: rgba(255,255,255,0.5);">nothing</div>
@@ -331,7 +120,7 @@
 <script src="js/utils.js"></script>
 <script src="js/audio.js"></script>
 <script src="js/data.js"></script>
-<script src="js/script.js"></script>
+<script src="js/one-page.js"></script>
 <script src="js/home.js"></script>
 <script src="js/mods.js"></script>
 <script src="js/game.js"></script>
